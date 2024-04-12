@@ -1,0 +1,107 @@
+@import "@/styles/respond";
+
+.selectWrapper {
+  position: relative;
+  user-select: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transition: transform 0.2s ease-out, margin-top 0.2s ease-out;
+  margin-top: -16px;
+  transform: rotate(180deg);
+}
+
+.placeholder {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  border: 1px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  height: 52px;
+  color: #2A4494;
+  background: #D3E3FA;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 12px;
+  padding: 16px 20px;
+
+}
+
+.placeholder[data-status="default"] {
+  border: 0 solid rgba(0, 0, 0, 0.6);
+}
+
+.placeholder[data-status="invalid"] {
+  border: 1px solid rgba(255, 0, 0, 1);
+}
+
+.placeholder[data-selected="true"] {
+  color: #2A4494;
+}
+
+.selectWrapper[data-is-active="true"] .arrow {
+  transform: rotate(0deg);
+  margin-top: -10px;
+}
+
+.selectWrapper[data-is-active="true"] .placeholder {
+  border-radius: 12px 12px 0 0;
+  border-top:2px solid  #2A4494;
+  border-left:2px solid  #2A4494;
+  border-right: 2px solid  #2A4494;
+}
+
+.selectWrapper:not([data-is-active="true"]),
+.placeholder:not([data-status="invalid"]):hover {
+}
+
+.select {
+  display: grid;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 10;
+  border-radius: 0 0 12px 12px;
+  background: #D3E3FA;
+  color: #2A4494;
+  border: solid 2px #2A4494;
+}
+
+.option {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 52px;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  background: #D3E3FA;
+  color: #2A4494;
+  @include respond(mobile-medium mobile-small) {
+    height: 36px;
+    padding: 8px 20px;
+  }
+}
+.option:last-child {
+  border-radius: 0 0 12px 12px;
+}
+
+.option[aria-selected="true"] {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.option:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}

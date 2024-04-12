@@ -1,0 +1,23 @@
+@import '@/styles/variable';
+@import '@/styles/respond';
+.basement{
+  &__subtitle{
+    @include service-subtitle;
+    margin-bottom: 30px;
+  }
+  &__wrapper{
+    display: flex;
+    gap: 32px;
+    @include respond(mobile){
+      flex-direction: column;
+    }
+  }
+  &__list{
+    display: flex;
+    flex-direction: column;
+    @include service-info;
+    width: 100%;
+    max-width: 762px;
+    line-height: 230%;
+  }
+}

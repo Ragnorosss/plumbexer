@@ -1,0 +1,23 @@
+@import "@/styles/respond";
+
+.ourServices {
+  padding: 0 16px;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &_title{
+      font-size: clamp(2rem, 1.567rem + 1.923vw, 3rem);
+      font-weight: 600;
+    }
+    &_servicesList {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      list-style-type: none;
+    }
+  }
+}

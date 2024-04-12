@@ -1,0 +1,150 @@
+@import "@/styles/respond";
+.contactSection {
+  padding: 0 16px;
+
+  &__wrapper {
+    gap: 36px;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 1.567rem + 1.923vw, 3rem);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__content {
+    gap: 36px;
+    font-size: 18px;
+    @include respond(mobile-small mobile-medium) {
+      flex-direction: column;
+    }
+
+    display: flex;
+    justify-content: center;
+    & > * {
+      flex: 1 1 50%;
+    }
+  }
+  &__answer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include respond(mobile-medium) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 clamp(0rem, -4.594rem + 17.5vw, 3.5rem) 24px;
+    }
+    @include respond(mobile-small) {
+      flex-direction: column;
+      padding: 0 0 16px;
+    }
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+
+      &_title {
+        font-weight: 600;
+        color: #BA0000;
+      }
+    }
+    &_itemNone {
+      width: 128px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include respond(mobile-medium) {
+      padding: 0 clamp(0rem, -4.594rem + 17.5vw, 3.5rem) 24px;
+    }
+    @include respond(mobile-small) {
+      padding: 0 0 24px;
+    }
+
+    &_inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    &_input {
+      background: #D3E3FA;
+      color: #2A4494;
+      border-radius: 12px;
+      padding: 16px 20px;
+      cursor: text;
+      transition: .1s ease-out;
+      outline: solid 0 #2A4494;
+      font-size: 14px;
+
+      &::placeholder {
+        color: #2A4494;
+      }
+
+      &:focus {
+        outline: solid 2px #2A4494;
+      }
+    }
+
+    &_textarea {
+      background: #D3E3FA;
+      color: #2A4494;
+      outline: solid 0 #2A4494;
+      border-radius: 12px;
+      font-size: 14px;
+      padding: 16px 20px;
+      cursor: text;
+      height: 156px;
+      transition: .1s ease-out;
+      resize: none;
+
+      &::placeholder {
+        color: #2A4494;
+      }
+      &:focus {
+        outline: solid 2px #2A4494;
+      }
+    }
+    &_lastItem {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      @include respond(mobile-small) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      &_button {
+        padding: 12px 36px;
+        background: #BA0000;
+        border-radius: 56px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 28px;
+      }
+
+      &_text {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

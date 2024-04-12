@@ -1,0 +1,86 @@
+@import "@/styles/respond";
+@import "@/styles/variable";
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px) saturate(0.8);
+  background: rgba(255, 255, 255, 0.7);
+  height: 72px;
+  display: flex;
+  padding: 0 16px;
+  z-index: 5;
+  &__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+  }
+  &__logo{
+    color: $primary-color;
+    font-weight: 600;
+    transition: all .2s ease-in-out;
+    display: flex;
+    align-items: center;
+
+    &_item{
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      white-space: nowrap;
+      &:hover {
+        text-decoration: none;
+      }
+      &_title{
+        font-size: 19.8px;
+        text-transform: uppercase;
+      }
+      &_subtitle{
+        font-size: 12px;
+        margin-top: -8px;
+      }
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  &__links{
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    width: 100%;
+    &_menu{
+      display: flex;
+      width: 100%;
+      max-width: 300px;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      gap: 2px;
+
+      @include respond(mobile-small) {
+        display: none;
+      }
+
+    }
+
+    &_phone{
+      color: $primary-color;
+      text-decoration: underline $primary-color;
+      transition: all .2s linear;
+      display: flex;
+      align-items: center;
+      &:hover{
+        opacity: 0.5;
+      }
+      @include respond(mobile-small mobile-medium) {
+        display: none;
+      }
+    }
+
+  }
+}
+

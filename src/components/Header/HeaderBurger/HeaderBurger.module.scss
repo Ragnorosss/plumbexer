@@ -1,0 +1,87 @@
+@import "@/styles/respond";
+@import "@/styles/variable";
+
+.header__burger {
+  background: #D3E3FA;
+  border-radius: 40px;
+  width: 60px;
+  padding: 12px 14px;
+  gap: 6px;
+  display: none;
+  border: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all .1s ease-out;
+  &_close{
+    font-size: 2rem;
+    color: $second-color;
+    background: transparent;
+  }
+  &_wrapper{
+    gap: 20px;
+    width: 100%;
+    position: absolute;
+    padding: 20px;
+    top: 0;
+    right: 0;
+    background: #D3E3FA;
+    height: 100vh;
+
+    &_logo{
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 3px solid $second-color;
+      padding-bottom: 20px;
+    }
+  }
+
+
+    &:hover {
+      opacity: 0.7;
+    }
+  &__logo_image_item{
+    display: flex;
+    align-items: flex-end;
+    color: $second-color;
+    gap:3px;
+  }
+  &_image_item_title{
+    font-size: 20px;
+    margin-bottom: -9px;
+    text-transform: uppercase;
+  }
+  &_image_item_subtitle{
+    margin-bottom: -3px;
+    font-size: 12px;
+
+  }
+  &__links_menu{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    font-weight: 600;
+    text-transform: uppercase;
+
+  }
+  &_stick--top, &_stick--bottom {
+    width: 32px;
+    height: 4px;
+    border-radius: 4px;
+    background: $second-color;
+    transition: all .1s ease-out;
+  }
+
+  &:hover {
+    background: $second-color;
+    & > div {  //  &_stick--top, &_stick--bottom
+      background: #D3E3FA;
+    }
+  }
+
+  @include respond(mobile-small) {
+    display: flex;
+  }
+}

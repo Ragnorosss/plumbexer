@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  position: relative;
+  padding-top: 48px;
+}
+.background {
+  z-index: -1;
+  top: 0;
+  position: absolute;
+  min-height: 156px;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,18 @@
+$primary-color: #BA0000;
+$second-color:#2A4494;
+$default-color:#000;
+$var-color:#D3E3FA;
+@mixin service-title{
+  color: $default-color;
+  font-size: clamp(2.25rem, 1.622rem + 3.863vw, 4.5rem);
+  font-weight: 600;
+}
+@mixin service-subtitle{
+  color:  $default-color;
+  font-size: clamp(2rem, 1.567rem + 1.923vw, 2.5rem);
+  font-weight: 600;
+}
+@mixin service-info{
+  color:$default-color;
+  font-size: 18px;
+}

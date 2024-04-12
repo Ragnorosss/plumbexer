@@ -1,0 +1,60 @@
+@import "@/styles/variable";
+
+.dropdown_menu {
+  list-style: none;
+  background: #D3E3FA;
+  color: #2A4494;
+  position: absolute;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  margin: 0 8px;
+  width: 100vw;
+  overflow: hidden;
+  gap: 3px;
+
+  &__item {
+    &.selected {
+      background: #2A4494;
+      color: #D3E3FA;
+    }
+    &:not(.selected):hover {
+      background: #a9c4ea;
+      color: #2A4494;
+    }
+
+    &_link {
+      display: block;
+      padding: 4px 16px;
+    }
+  }
+}
+
+.button {
+  padding: 4px;
+  color: $default-color;
+  text-decoration: none;
+  border-top: solid 0 transparent;
+  border-bottom: solid 0 rgba(42, 68, 148, 0);
+  white-space: nowrap;
+  transition: .2s ease-in-out;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+
+  &:hover {
+    color: $default-color;
+    text-decoration: none;
+    border-top-width: 3px;
+    border-bottom: solid 3px rgba(42, 68, 148, 0.5);
+  }
+
+  &.selected {
+    border-top-width: 3px;
+    border-bottom: solid 3px rgba(42, 68, 148, 1);
+  }
+}

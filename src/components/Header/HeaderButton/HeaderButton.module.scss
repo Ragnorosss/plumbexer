@@ -1,0 +1,24 @@
+@import "@/styles/respond";
+@import "@/styles/variable";
+.button {
+  padding: 4px;
+  color: $default-color;
+  text-decoration: none;
+  border-top: solid 0 transparent;
+  border-bottom: solid 0 rgba(42, 68, 148, 0);
+  white-space: nowrap;
+  user-select: none;
+  transition: .2s ease-in-out;
+
+  &:hover {
+    color: $default-color;
+    border-top-width: 3px;
+    border-bottom: solid 3px rgba(42, 68, 148, 0.5);
+  }
+
+  &.selected {
+    border-top-width: 3px;
+    border-bottom: solid 3px rgba(42, 68, 148, 1);
+  }
+
+}

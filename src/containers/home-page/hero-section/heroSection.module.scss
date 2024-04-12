@@ -1,0 +1,151 @@
+@import "@/styles/respond";
+@import "@/styles/variable";
+.heroSection {
+  .heroSection__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    height: 772px;
+    gap: 16px;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      height: auto;
+    }
+
+    &_content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-left: 16px;
+      transition: .1s ease-out;
+      @include respond(mobile) {
+        padding-right: 16px;
+      }
+
+      &_title {
+        margin-top: 170px;
+        font-size: clamp(2.25rem, 1.622rem + 3.863vw, 4.5rem);
+        font-weight: 600;
+        line-height: 1;
+
+        @include respond(mobile) {
+          margin-top: 0;
+        }
+
+        @include respond(mobile-small) {
+        }
+      }
+
+      &_subtitle {
+        font-size: 18px;
+      }
+
+      &_contactUs {
+        align-self: baseline;
+        padding: 12px 28px;
+        background: $second-color;
+        border-radius: 56px;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 28px;
+        transition: .1s ease-out;
+        border: solid 2px transparent;
+
+        &:hover {
+          border: solid 2px $second-color;
+          color: $second-color;
+          background: transparent;
+        }
+      }
+    }
+
+    &_image {
+      padding: 16px 16px 16px 0;
+      transition: .2s ease-out;
+      &--desktop {
+        display: flex;
+        gap: 24px;
+
+        &-left, &-right {
+          width: auto;
+          height: 620px;
+          border-radius: 16px;
+        }
+
+        &-left {
+
+        }
+        &-right {
+          margin-top: 128px;
+        }
+      }
+
+      &--mobile {
+        display: none;
+        width: 100%;
+        height: clamp(12.5rem, 8.154rem + 16.557vw, 18.75rem);
+        border-radius: 20px;
+        object-fit: cover;
+        transition: .2s ease-out;
+        transition-property: padding, border-radius;
+      }
+
+      @include respond(mobile) {
+        padding: 16px;
+        &--mobile {
+          display: block;
+        }
+        &--desktop {
+          display: none;
+        }
+      }
+
+      @include respond(mobile-small) {
+        padding: 0;
+        &--mobile {
+          border-radius: 0;
+          height: 200px;
+        }
+      }
+    }
+
+    &_list {
+      padding: 0 16px;
+      font-size: 18px;
+      position: absolute;
+      left: 0;
+      margin-left: 48px;
+      bottom: 0;
+      display: flex;
+      gap: 24px 56px;
+      counter-reset: item;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      @include respond(mobile) {
+        position: unset;
+      }
+
+      & > li {
+        display: block;
+        max-width: 200px;
+        @include respond(mobile) {
+          width: 100%;
+          max-width: 100%;
+          flex: 1 0 200px;
+        }
+
+        &::before {
+          font-weight: 600;
+          display: inline-block;
+          content: "[ " counter(item) " ] ";
+          counter-increment: item;
+          width: 48px;
+          margin-left: -48px;
+        }
+      }
+    }
+  }
+}

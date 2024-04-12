@@ -1,0 +1,63 @@
+@import "@/styles/variable";
+@import "@/styles/respond";
+.hero{
+  margin-bottom: 100px;
+  &__top{
+    margin-bottom: 100px;
+    &_title{
+      @include service-title
+    }
+    &_info{
+      @include service-info;
+      margin-top: 21px;
+      margin-bottom: 30px;
+    }
+    &_link{
+      padding: 12px 28px;
+      background:$second-color ;
+      border-radius: 100vw;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 28px;
+      transition: .1s ease-out;
+      border: solid 2px transparent;
+      &:hover {
+        border: solid 2px $second-color;
+        color: $second-color;
+        background: transparent;
+      }
+    }
+  }
+  &__bottom{
+    margin-bottom: 100px;
+    &_subtitle{
+      @include service-subtitle;
+      margin-bottom: 30px;
+    }
+    &_wrapper{
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      @include service-info;
+      @include respond(mobile){
+        flex-direction: column-reverse;
+        align-items: stretch;
+      }
+    }
+    &_list{
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      &_item{
+        margin-left: 30px;
+      }
+    }
+    &_info_inner{
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+    }
+  }
+}
