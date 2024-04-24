@@ -100,6 +100,7 @@ const Select = (props: SelectProps) => {
   };
 
   return (
+    <div style={{position:'relative'}}>
     <div
       className={styles.selectWrapper}
       ref={rootRef}
@@ -131,7 +132,8 @@ const Select = (props: SelectProps) => {
           ))}
         </ul>
       )}
-    </div>
+    </div></div>
+    
   );
 };
 

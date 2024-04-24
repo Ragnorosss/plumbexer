@@ -6,8 +6,26 @@ import OtherServices from "@/containers/reused/other-services/OtherServices";
 export const metadata: Metadata = {
   title: "Pipe bursting",
   description:
-    'n the realm of plumbing services, innovations are constantly evolving to offer more efficient and less invasive solutions. One such advancement is "pipe bursting," a trenchless method revolutionizing the way pipelines are replaced. If you\'re facing issues with your underground pipelines, understanding pipe bursting could help you make informed decisions when seeking plumbing services.',
-  applicationName: "Clover-plate",
+    `In the realm of plumbing services, innovations are constantly evolving to offer more efficient and less invasive solutions. One such advancement is "pipe bursting," a trenchless method revolutionizing the way pipelines are replaced. If you're facing issues with your underground pipelines, understanding pipe bursting could help you make informed decisions when seeking plumbing services.`,
+  applicationName: "Plumbexer",
+  creator:"Clover-plate",
+  keywords:['Pipe bursting','Trenchless pipe replacement','Sewer line repair', 'No-dig pipe repair', 'Underground pipe replacement', 'Old pipe renovation', 'Water line replacement'],
+  openGraph:{
+    title: 'Pipe bursting"',
+    description: `
+    In the realm of plumbing services, innovations are constantly evolving to offer more efficient and less invasive solutions. One such advancement is "pipe bursting," a trenchless method revolutionizing the way pipelines are replaced. If you're facing issues with your underground pipelines, understanding pipe bursting could help you make informed decisions when seeking plumbing services.`,
+    url: 'https://www.plumbexer.com/services/pipe-bursting',
+    siteName: 'Plumbexer',
+    images: [
+      {
+        url: './../../public/logo.svg',
+        width: 512,
+        height: 512,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 export default function PipePage() {
   return (

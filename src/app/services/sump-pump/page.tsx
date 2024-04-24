@@ -7,8 +7,26 @@ export const metadata: Metadata = {
   title: "Sump pump",
   description:
     "Your sump pump is your first line of defense against basement flooding. A costly basement flood can happen any time — if you suspect a problem with your sump pump, don’t delay in getting it looked at!",
-  applicationName: "Clover-plate",
+  applicationName: "Plumbexer",
+  creator:'Clover-plate',
+  keywords:['sump pump installation', 'basement waterproofing', 'flood prevention', 'sump pump repair', 'water drainage solutions', 'submersible pumps', 'sump pump maintenance'],
   robots: "index, follow",
+  openGraph:{
+    title: 'Sump pump',
+    description: `
+    Your sump pump is your first line of defense against basement flooding. A costly basement flood can happen any time — if you suspect a problem with your sump pump, don’t delay in getting it looked at!`,
+    url: 'https://www.plumbexer.com/services/sump-pump',
+    siteName: 'Plumbexer',
+    images: [
+      {
+        url: './../../public/logo.svg',
+        width: 512,
+        height: 512,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 export default function SumpPage() {
   return (

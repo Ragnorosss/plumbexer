@@ -7,9 +7,26 @@ export const metadata: Metadata = {
   title: "Underpinning",
   description:
     "Underpinning s strengthening or reinforcing the foundation of an existing building of structure. It is typically done when the existing foundation is no longer firm enough to support the building's weight or when the soil conditions have changed so the foundation is no longer stable.\n",
-  keywords: ["Underpinning", "services"],
+  keywords: ['foundation underpinning', 'basement stabilization', 'structural repair', 'foundation reinforcement', 'soil stabilization', 'building support', 'underpinning services'],
   robots: "index, follow",
-  applicationName: "Clover-plate",
+  applicationName: "Plumbexer",
+  creator:'Clover-plate',
+  openGraph:{
+    title: 'Underpinning',
+    description:    
+    "Underpinning s strengthening or reinforcing the foundation of an existing building of structure. It is typically done when the existing foundation is no longer firm enough to support the building's weight or when the soil conditions have changed so the foundation is no longer stable.\n",
+    url: 'https://www.plumbexer.com/services/underpinning',
+    siteName: 'Plumbexer',
+    images: [
+      {
+        url: './../../public/logo.svg',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 export default function UnderPiningPage() {
   return (

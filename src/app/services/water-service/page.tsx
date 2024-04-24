@@ -10,6 +10,23 @@ export const metadata: Metadata = {
     "Water service is a crucial aspect of any property's infrastructure, providing essential access to clean and reliable water for various purposes. From drinking and cooking to bathing and sanitation, a dependable water service system is essential for the health, safety, and comfort of occupants.",
   applicationName: "Clover-plate",
   robots: "index, follow",
+  keywords:['water supply services', 'drinking water services', 'residential water service', 'commercial water service', 'water utility company', 'emergency water supply', 'water quality testing'],
+  openGraph:{
+    title: 'Water service"',
+    description:    
+    "Water service is a crucial aspect of any property's infrastructure, providing essential access to clean and reliable water for various purposes. From drinking and cooking to bathing and sanitation, a dependable water service system is essential for the health, safety, and comfort of occupants.",
+    siteName: 'Plumbexer',
+    url:'https://www.plumbexer.com/services/water-service',
+    images: [
+      {
+        url: './../../public/logo.svg',
+        width: 512,
+        height: 512,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 export default function WaterPage() {
   return (

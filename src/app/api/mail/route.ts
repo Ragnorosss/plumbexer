@@ -1,11 +1,18 @@
 "use server";
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
-export async function POST(req: NextRequest) {
-  const secretKey = "6LdSKbkpAAAAACFhtMKXNOKmgnpyv8ySp4iTj7m1";
+
+export async function POST(req: NextRequest, res:NextResponse) {
+  const cookieHeader = req.headers.get('cookie') || '';
+  const cookies = Object.fromEntries(cookieHeader.split('; ').map(c => c.split('=')));
+  let sendCount = parseInt(cookies.sendCount || '0', 10);
+
   try {
-    // Используйте req.json() для получения данных JSON из тела запроса
-    const { fullName, phone, email, service, text,token } = await req.json();
+    if (sendCount >= 3) {
+      return new NextResponse(JSON.stringify({ message: 'Limit of sent messages reached.' }), { status: 429 });
+    }
+
+    const { fullName, phone, email, service, text } = await req.json();
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       service: "gmail",
@@ -15,7 +22,7 @@ export async function POST(req: NextRequest) {
         pass: 'rpeo potr dxmv tjdk',
       },
     });
-
+    
     const mailOptions = {
       from: `"Форма обратной связи" <'plumbexer@gmail.com'>`,
       to: "plumbexer@gmail.com",
@@ -29,12 +36,14 @@ export async function POST(req: NextRequest) {
         <p><strong>Описание:</strong> ${text}</p>
       `,
     };
-
     await transporter.sendMail(mailOptions);
-    return new NextResponse(
-      JSON.stringify({ message: "Email sent successfully!" }),
-      { status: 200 },
-    );
+
+    sendCount++;
+
+    const newSendCount = sendCount + 1;
+    const response = new NextResponse(JSON.stringify({ message: "Email sent successfully!" }), { status: 200 });
+    response.headers.set('Set-Cookie', `sendCount=${newSendCount}; HttpOnly; Path=/; Max-Age=${24 * 60 * 60}`);
+    return response;
   } catch (error) {
     console.error("Failed to send email:", error);
     return new NextResponse(

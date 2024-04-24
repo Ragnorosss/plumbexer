@@ -1,11 +1,13 @@
 "use client";
 import { FC, ReactNode, useState, forwardRef, FormEvent } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Select from "@/components/Select/Select";
 import ServicesList from "@/lists/ServicesList";
 import styles from "@/containers/contact-us/contact-section/contactSection.module.scss";
 import Link from "next/link";
 import Captcha from "@/components/Captcha/Captcha";
+import Loader from "../Loader/Loader";
+import Modal from "../Modal/Modal";
 
 type TForm = {
   children?: ReactNode;
@@ -19,7 +21,11 @@ export const Form: FC<TForm> = forwardRef<Ref, TForm>(
     const [email, setEmail] = useState<string>("");
     const [service, setService] = useState<string>("");
     const [text, setText] = useState<string>("");
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const [modalData, setModalData] = useState<{ open: boolean; message: string }>({
+      open: false,
+      message: "",
+    });
     const options = ServicesList.map((x) => ({
       title: x.name,
       value: x.val,
@@ -27,23 +33,63 @@ export const Form: FC<TForm> = forwardRef<Ref, TForm>(
     const handleMonthSelect = (value: string) => {
       setService(value);
     };
-    const handleSubmit = async (e: FormEvent) => {
+    const resetForm = () => {
+      setFullName("");
+      setPhone("");
+      setEmail("");
+      setService("");
+      setText("");
+    };
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const respones = await fetch("/api/mail", {
-        method: "POST",
-        body: JSON.stringify({
-          fullName,
-          phone,
-          email,
-          service,
-          text,
-        }),
-      });
-      console.log(respones);
+      setLoading(true)
+      try {
+        const response = await fetch("/api/mail", {
+          method: "POST",
+          body: JSON.stringify({
+            fullName,
+            phone,
+            email,
+            service,
+            text,
+          }),
+        });
+        if (response.status === 429) {
+          setModalData({ open: true, message: 'You have reached the limit of sent messages.' });
+        } 
+        if(response.status === 200){
+          setModalData({ open: true, message: 'Message sent successfully.' });
+          setLoading(false); 
+        }
+        if(response.status === 500) {
+          setModalData({ open: true, message: 'Something went wrong, please try again.' });
+          setLoading(false); 
+        }
+      } 
+      catch (error) {
+        setModalData({ open: true, message: 'An error occurred. Please try again.' });
+        setLoading(false); 
+       }
+      finally{
+        resetForm();
+        setLoading(false); 
+      }
     };
     const selectedOption = options.find((item) => item.value === service);
+    const closeModal = () => {
+      setModalData({ ...modalData, open: false });
+    };
     return (
       <>
+      <AnimatePresence>
+        {loading && <Loader />}
+        {modalData.open && (
+          <Modal 
+            message={modalData.message} 
+            onClose={closeModal}
+          />
+        )}
+      </AnimatePresence>
         <form
           ref={ref}
           className={styles.contactSection__form}
@@ -89,6 +135,7 @@ export const Form: FC<TForm> = forwardRef<Ref, TForm>(
             />
           </div>
           <div className={styles.contactSection__form_lastItem}>
+            
             <button className={styles.contactSection__form_lastItem_button}>
               Submit
             </button>
