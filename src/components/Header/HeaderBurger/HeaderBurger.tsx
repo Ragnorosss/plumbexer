@@ -85,9 +85,9 @@ const HeaderBurger: FC<HeaderBurgerProps> = ({}) => {
               </a>
               <a
                 className={styles.header__links_phone}
-                href={"mailto: mail@mail.com"}
+                href={"mailto:plumbexer@gmail.com"}
               >
-                mail@mail.com
+                plumbexer@gmail.com
               </a>
             </div>
           </motion.div>
