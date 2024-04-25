@@ -5,7 +5,6 @@ export async function POST(req: NextRequest) {
   const cookieHeader = req.headers.get('cookie') || '';
   const cookies = Object.fromEntries(cookieHeader.split('; ').map(c => c.split('=')));
   let sendCount = parseInt(cookies.sendCount || '0', 10);
-  console.log(process.env.SMTP_EMAIL)
   try {
     if (sendCount >= 3) {
       return new NextResponse(JSON.stringify({ message: 'Limit of sent messages reached.' }), { status: 429 });
@@ -19,14 +18,14 @@ export async function POST(req: NextRequest) {
       service: "gmail",
       secure: true,
       auth: {
-        user: process.env.SMTP_EMAIL,
-        pass: process.env.SMTP_PASS,
+        user:'plumbexer@gmail.com',
+        pass: 'rpeo potr dxmv tjd',
       },
     });
 
     const mailOptions = {
-      from: `"Форма обратной связи" <${process.env.SMTP_EMAIL}>`,
-      to: process.env.SMTP_EMAIL,
+      from: `"Форма обратной связи" <"${email}">`,
+      to: "plumbexer@gmail.com",
       subject: `Запрос от ${fullName}`,
       text: text,
       html: `
