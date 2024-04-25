@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       secure: true,
       auth: {
         user:'plumbexer@gmail.com',
-        pass: 'rpeo potr dxmv tjd',
+        pass: 'rpeo potr dxmv tjdk',
       },
     });
 
