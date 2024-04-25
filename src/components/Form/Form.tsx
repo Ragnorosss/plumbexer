@@ -1,3 +1,4 @@
+'use client'
 import { FC, ReactNode, useState, forwardRef, FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Select from "@/components/Select/Select";
