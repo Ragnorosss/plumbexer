@@ -27,9 +27,7 @@ export const Form: FC<TForm> = forwardRef<HTMLFormElement, TForm>(({ children, c
     value: x.val,
   }));
   const selectedOption = options.find((item) => item.value === service);
-  const closeModal = () => {
-    setModalData({ ...modalData, open: false });
-  };
+
   const handleMonthSelect = (value: string) => {
     setService(value);
   };
@@ -74,7 +72,7 @@ export const Form: FC<TForm> = forwardRef<HTMLFormElement, TForm>(({ children, c
           text,
         }),
       });
-
+      
       const result = await response.json();
       if (response.ok) {
         setModalData({ open: true, message: 'Message sent successfully.' });
@@ -87,7 +85,6 @@ export const Form: FC<TForm> = forwardRef<HTMLFormElement, TForm>(({ children, c
       setLoading(false);
     }
   };
-
   return (
     <>
       <AnimatePresence>
