@@ -44,11 +44,11 @@ export const metadata: Metadata = {
     "to excellence. Our experience ensures reliable solutions tailored to your needs. Equipped with the latest tools, we approach " +
     "each project with precision and efficiency. From minor repairs to major installations, our services have you covered. " +
     "Choose us for reliability, expertise, and peace of mind.",
-    url: '',
+    url: 'https://www.plumbexer.com/',
     siteName: 'Plumbexer',
     images: [
       {
-        url: './../../public/logo.svg',
+        url: 'logo.svg',
         width: 512,
         height: 512,
       },

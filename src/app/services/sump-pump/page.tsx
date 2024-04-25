@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Plumbexer',
     images: [
       {
-        url: './../../public/logo.svg',
+        url: 'logo.svg',
         width: 512,
         height: 512,
       },

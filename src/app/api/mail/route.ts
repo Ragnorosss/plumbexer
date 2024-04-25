@@ -1,8 +1,7 @@
-"use server";
 import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res:NextResponse) {
+export async function POST(req: NextRequest) {
   const cookieHeader = req.headers.get('cookie') || '';
   const cookies = Object.fromEntries(cookieHeader.split('; ').map(c => c.split('=')));
   let sendCount = parseInt(cookies.sendCount || '0', 10);
@@ -13,19 +12,21 @@ export async function POST(req: NextRequest, res:NextResponse) {
     }
 
     const { fullName, phone, email, service, text } = await req.json();
+
+
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       service: "gmail",
       secure: true,
       auth: {
-        user: 'plumbexer@gmail.com',
-        pass: 'rpeo potr dxmv tjdk',
+        user: process.env.NEXT_SMTP_EMAIL,
+        pass: process.env.NEXT_SMTP_PASS,
       },
     });
-    
+
     const mailOptions = {
-      from: `"Форма обратной связи" <'plumbexer@gmail.com'>`,
-      to: "plumbexer@gmail.com",
+      from: `"Форма обратной связи" <${process.env.NEXT_PUBLIC_SMTP_EMAIL}>`,
+      to: process.env.NEXT_SMTP_EMAIL,
       subject: `Запрос от ${fullName}`,
       text: text,
       html: `
@@ -36,21 +37,17 @@ export async function POST(req: NextRequest, res:NextResponse) {
         <p><strong>Описание:</strong> ${text}</p>
       `,
     };
+
     await transporter.sendMail(mailOptions);
-
     sendCount++;
-
     const newSendCount = sendCount + 1;
+
     const response = new NextResponse(JSON.stringify({ message: "Email sent successfully!" }), { status: 200 });
     response.headers.set('Set-Cookie', `sendCount=${newSendCount}; HttpOnly; Path=/; Max-Age=${24 * 60 * 60}`);
     return response;
   } catch (error) {
     console.error("Failed to send email:", error);
-    return new NextResponse(
-      JSON.stringify({
-        message: "Internal Server Error",
-      }),
-      { status: 500 },
-    );
+    return new NextResponse(JSON.stringify({ message: "Internal Server Error" }), { status: 500 });
   }
 }
+

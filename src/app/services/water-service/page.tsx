@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url:'https://www.plumbexer.com/services/water-service',
     images: [
       {
-        url: './../../public/logo.svg',
+        url: 'logo.svg',
         width: 512,
         height: 512,
       },
