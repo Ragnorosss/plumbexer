@@ -79,9 +79,9 @@ const HeaderBurger: FC<HeaderBurgerProps> = ({}) => {
             >
               <a
                 className={styles.header__links_phone}
-                href={"tel:+1234567890"}
+                href={"tel:+14375565332"}
               >
-                123-456-7890
+                +1 437 556 5332
               </a>
               <a
                 className={styles.header__links_phone}
